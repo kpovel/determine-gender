@@ -4,6 +4,11 @@ const result = document.getElementById('result')
 const serverUrl = 'https://api.genderize.io'
 
 button.addEventListener('click', sendRequest)
+input.addEventListener("keydown", function (e){
+    if (e.code === 'Enter'){
+        sendRequest()
+    }
+})
 
 function sendRequest (){
     const firstName = input.value
