@@ -15,12 +15,13 @@ function sendRequest() {
     const url = `${serverUrl}?name=${firstName}`
     fetch(url)
         .then(response => response.json())
-        .then(function (commits) {
+        .then((item) => {
             try {
-                if (commits.gender === null || commits.gender === undefined) {
+                const isNotGender = item.gender === null || item.gender === undefined
+                if (isNotGender) {
                     throw new Error('unknown gender')
                 }
-                result.textContent = `${firstName} - ${commits.gender}`
+                result.textContent = `${firstName} - ${item.gender}`
             } catch (e) {
                 result.textContent = `${firstName} - ${e.message}`
             }
